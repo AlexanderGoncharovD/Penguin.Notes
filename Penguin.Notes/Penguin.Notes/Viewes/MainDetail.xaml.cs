@@ -12,20 +12,29 @@ using Penguin.Notes;
 
 namespace Penguin.Notes.Viewes
 {
+    /// <summary>
+    /// Основная страница приложения
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainDetail : ContentPage
     {
+        #region .ctor
+
         public MainDetail()
         {
-
-
             InitializeComponent();
             MasterNotes.Load();
             Content.ItemsSource = MasterNotes.Notes.Content;
 
         }
 
-        
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Вызывается при нажатии на заметку
+        /// </summary>
         private async void Content_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Note note = e.Item as Note;
@@ -34,5 +43,7 @@ namespace Penguin.Notes.Viewes
             ((CreateNewNote)page).note = note;
             await Navigation.PushAsync(page);
         }
+
+        #endregion
     }
 }
