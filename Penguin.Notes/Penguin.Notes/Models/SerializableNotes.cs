@@ -6,7 +6,7 @@ using System.Text;
 namespace Penguin.Notes.Models
 {
     /// <summary>
-    ///     Сериализуемый класс с существемымы записками
+    /// Сериализуемый класс с существующими записками
     /// </summary>
     [Serializable]
     public class SerializableNotes
@@ -14,7 +14,7 @@ namespace Penguin.Notes.Models
         #region Properties
 
         /// <summary>
-        ///     Все существующие записки
+        /// Все существующие записки
         /// </summary>
         public ObservableCollection<Note> Content { get; set; } = new ObservableCollection<Note>();
 

@@ -6,24 +6,24 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace Penguin.Notes
 {
     /// <summary>
-    ///     Класс мастера по управлению с записками
+    /// Класс мастера по управлению с записками
     /// </summary>
     public static class MasterNotes
     {
         #region Fields
 
         /// <summary>
-        ///     Сериализуемый класс с записками
+        /// Сериализуемый класс с записками
         /// </summary>
         public static SerializableNotes Notes { get; set; } = new SerializableNotes();
 
         /// <summary>
-        ///     Путь хранения сериализованных записок
+        /// Путь хранения сериализованных записок
         /// </summary>
-        static readonly string filePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "notes.dat");
+        static readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "notes.dat");
 
         /// <summary>
-        ///     Форматер для бинарной сериализации
+        /// Форматер для бинарной сериализации
         /// </summary>
         static BinaryFormatter formater = new BinaryFormatter();
 
@@ -32,7 +32,7 @@ namespace Penguin.Notes
         #region Methods
 
         /// <summary>
-        ///     Десериализовать класс с записками
+        /// Десериализовать класс с записками
         /// </summary>
         public static void Load()
         {
@@ -43,7 +43,7 @@ namespace Penguin.Notes
         }
 
         /// <summary>
-        ///     Сериализовать класс с записками
+        ///  Сериализовать класс с записками
         /// </summary>
         /// <returns>Текст ошибки</returns>
         public static string SaveAsync()
