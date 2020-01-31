@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="New Note"
+             x:Class="Penguin.Notes.Viewes.CreateNewNote"
+             xmlns:local="clr-namespace:Penguin.Notes.CustomElements;assembly=Penguin.Notes">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="note_save_btn" 
+                     Clicked="Save_Clicked"/>
+        <ToolbarItem IconImageSource="note_share_btn" 
+                     Clicked="Share_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout x:Name="Page" Padding="20, 10, 20, 20">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Name:" FontSize="20" VerticalTextAlignment="Center"/>
+                <Entry x:Name="Title" Grid.Column="1" Placeholder="No name" MaxLength="25"/>
+            </Grid>
+            <local:CustomEditor x:Name="EditorContent" Placeholder="Content" AutoSize="TextChanges" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Penguin.Notes.Viewes.MainDetail"
+             Title="My Notes"
+             xmlns:local="clr-namespace:Penguin.Notes.CustomElements;assembly=Penguin.Notes">
+    
+  <StackLayout Padding="10">
+        <ListView x:Name="Content"
+                  SelectionMode="None" 
+                  BackgroundColor="Default"
+                  RowHeight="100"
+                  SeparatorVisibility="None"
+                  ItemTapped="Content_ItemTapped"
+                  VerticalScrollBarVisibility="Never">
+            
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>qwertyuiopasdfghjkl;qwert</x:String>
+                    <x:String>create new note</x:String>
+                    <x:String>settings</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="10">
+                            <BoxView x:Name="ff" BackgroundColor="#CECECE" CornerRadius="10"/>
+                            <BoxView BackgroundColor="#F6F6F6" CornerRadius="10" Margin="0, 0, 1, 1"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Padding="20, 10, 10, 20">
+                                    <Label Text="{Binding Title}" d:Text="{Binding}" FontSize="18" TextColor="#383838" Margin="5, 0, 0, 0"/>
+                                    <Label Text="{Binding Description}" d:Text="{Binding}" FontSize="15" TextColor="Gray"/>
+                                </StackLayout>
+                                <BoxView Grid.Column="1" BackgroundColor="#5E2580" CornerRadius="0, 10, 0, 10"/>
+                                <Grid Grid.Column="1" Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="note_share_btn"/>
+                                    <Image Grid.Row="1" Source="note_delete_btn"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
