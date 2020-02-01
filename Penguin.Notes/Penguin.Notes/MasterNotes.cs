@@ -29,12 +29,12 @@ namespace Penguin.Notes
 
         #endregion
 
-        #region Methods
+        #region Public Methods
 
         /// <summary>
         /// Десериализовать класс с записками
         /// </summary>
-        public static void Load()
+        public static void LoadNotes()
         {
             using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
             {
@@ -46,7 +46,7 @@ namespace Penguin.Notes
         ///  Сериализовать класс с записками
         /// </summary>
         /// <returns>Текст ошибки</returns>
-        public static string SaveAsync()
+        public static string SaveNotesAsync()
         {
             try
             {

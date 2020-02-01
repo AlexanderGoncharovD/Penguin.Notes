@@ -17,7 +17,7 @@ namespace Penguin.Notes.Viewes
     {
         private Nullable<int> isEditIndex { get; set; } = null;
         private Note _note;
-        public Note note { get => _note;
+        public Note Note { get => _note;
             set
             {
                 Title.Text = value.Title;
@@ -38,15 +38,13 @@ namespace Penguin.Notes.Viewes
         }
 
         /// <summary>
-        ///     Обработчик нажатия кнопки сохранения заметки
+        /// Обработчик нажатия кнопки сохранения заметки
         /// </summary>
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            if (isEditIndex != null)
-                MasterNotes.Notes.Content[(int)isEditIndex] = new Note(Title.Text, EditorContent.Text);
-            else
-                MasterNotes.Notes?.Content.Add(new Note(Title.Text, EditorContent.Text));
-            var error = MasterNotes.SaveAsync();
+            MasterNotes.Notes.AddNote(new Note(Title.Text, EditorContent.Text, isEditIndex));
+
+            var error = MasterNotes.SaveNotesAsync();
             if (!String.IsNullOrEmpty(error))
             {
                 if (await DisplayAlert("ERROR", error, "COPY", "OK"))
@@ -57,10 +55,8 @@ namespace Penguin.Notes.Viewes
         }
 
         /// <summary>
-        ///     Обработчик нажатия кнопки поделиться заметкой
+        /// Обработчик нажатия кнопки поделиться заметкой
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void Share_Clicked(object sender, EventArgs e)
         {
             string textToSend = $"\"{ Title.Text}\"\n{EditorContent.Text}";

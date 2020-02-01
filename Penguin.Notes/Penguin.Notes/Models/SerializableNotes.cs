@@ -11,12 +11,34 @@ namespace Penguin.Notes.Models
     [Serializable]
     public class SerializableNotes
     {
+
         #region Properties
 
         /// <summary>
-        /// Все существующие записки
+        /// Все существующие заметки
         /// </summary>
         public ObservableCollection<Note> Content { get; set; } = new ObservableCollection<Note>();
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Добавить или изменить существуюущую заметку
+        /// </summary>
+        /// <param name="note"></param>
+        public void AddNote(Note note)
+        {
+            foreach (var item in Content)
+            {
+                if (item.Index == note.Index)
+                {
+                    Content[Content.IndexOf(item)] = note;
+                    return;
+                }
+            }
+            Content.Insert(0, note);
+        }
 
         #endregion
     }

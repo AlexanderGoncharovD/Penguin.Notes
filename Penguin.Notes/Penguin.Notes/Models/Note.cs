@@ -29,20 +29,21 @@ namespace Penguin.Notes.Models
         /// <summary>
         /// Порядковый номер заметки
         /// </summary>
-        public int Index { get; set; }
+        public Nullable<int> Index { get; set; }
 
         #endregion
 
-        public Note()
-        {
-        }
+        #region .ctor
 
-        public Note(string title, string content)
+        public Note(string title, string content, Nullable<int> index = null)
         {
             Title = title;
             Content = content;
+            Index = index;
             if (!String.IsNullOrEmpty(content))
                 Description = content.Substring(0, content.Length <= 50 ? content.Length : 50);
         }
+
+        #endregion
     }
 }
