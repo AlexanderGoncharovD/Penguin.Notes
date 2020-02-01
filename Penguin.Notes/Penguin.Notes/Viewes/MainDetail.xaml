@@ -8,7 +8,7 @@
              Title="My Notes"
              xmlns:local="clr-namespace:Penguin.Notes.CustomElements;assembly=Penguin.Notes">
     
-  <StackLayout Padding="10">
+  <StackLayout>
         <ListView x:Name="Content"
                   SelectionMode="None" 
                   BackgroundColor="Default"
