@@ -29,6 +29,7 @@ namespace Penguin.Notes.Models
         /// <param name="note"></param>
         public void AddNote(Note note)
         {
+            note.Date = DateTime.Now;
             foreach (var item in Content)
             {
                 if (item.Index == note.Index)

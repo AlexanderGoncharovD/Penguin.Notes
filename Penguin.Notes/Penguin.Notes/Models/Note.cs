@@ -10,6 +10,7 @@ namespace Penguin.Notes.Models
     [Serializable]
     public class Note
     {
+
         #region Properties
 
         /// <summary>
@@ -30,6 +31,11 @@ namespace Penguin.Notes.Models
         /// Порядковый номер заметки
         /// </summary>
         public Nullable<int> Index { get; set; }
+
+        /// <summary>
+        /// Время последнего изменеине заметки
+        /// </summary>
+        public DateTime Date { get; set; }
 
         #endregion
 
