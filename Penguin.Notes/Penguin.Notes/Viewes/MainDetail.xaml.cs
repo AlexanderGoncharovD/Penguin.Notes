@@ -23,7 +23,7 @@ namespace Penguin.Notes.Viewes
         public MainDetail()
         {
             InitializeComponent();
-            MasterNotes.Load();
+            MasterNotes.LoadNotes();
             Content.ItemsSource = MasterNotes.Notes.Content;
 
         }
@@ -40,7 +40,7 @@ namespace Penguin.Notes.Viewes
             Note note = e.Item as Note;
             note.Index = e.ItemIndex;
             Page page = new CreateNewNote();
-            ((CreateNewNote)page).note = note;
+            ((CreateNewNote)page).Note = note;
             await Navigation.PushAsync(page);
         }
 
