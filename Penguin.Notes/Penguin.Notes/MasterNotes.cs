@@ -36,10 +36,14 @@ namespace Penguin.Notes
         /// </summary>
         public static void LoadNotes()
         {
-            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            try
             {
-                Notes = (SerializableNotes)formater.Deserialize(fs);
+                using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+                {
+                    Notes = (SerializableNotes)formater.Deserialize(fs);
+                }
             }
+            catch (Exception e) { }
         }
 
         /// <summary>

@@ -29,15 +29,40 @@ namespace Penguin.Notes.Models
         /// <param name="note"></param>
         public void AddNote(Note note)
         {
-            foreach (var item in Content)
+            if (Content.Count > 0)
             {
-                if (item.Index == note.Index)
+                foreach (var item in Content)
                 {
-                    Content[Content.IndexOf(item)] = note;
-                    return;
+                    if (item.Index == note.Index)
+                    {
+                        Content[Content.IndexOf(item)] = note;
+                        return;
+                    }
                 }
+                Content.Insert(0, note);
             }
-            Content.Insert(0, note);
+            else
+            {
+                Content.Add(note);
+            }
+        }
+
+        /// <summary>
+        /// Удалить записку по модели записки
+        /// </summary>
+        /// <param name="note">Модель записки</param>
+        public void DeleteNote(Note note)
+        {
+            Content.Remove(note);
+        }
+
+        /// <summary>
+        /// Удалить записку по индексу
+        /// </summary>
+        /// <param name="index">Порядковый номер записки в коллекции</param>
+        public void DeleteNote(int index)
+        {
+            Content.RemoveAt(index);
         }
 
         #endregion

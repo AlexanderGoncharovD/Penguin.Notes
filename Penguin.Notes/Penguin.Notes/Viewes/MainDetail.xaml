@@ -40,15 +40,18 @@
                                     <Label Text="{Binding Description}" d:Text="{Binding}" FontSize="15" TextColor="Gray"/>
                                 </StackLayout>
                                 <BoxView Grid.Column="1" BackgroundColor="#5E2580" CornerRadius="0, 10, 0, 10"/>
-                                <Grid Grid.Column="1" Padding="10">
+                                <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                    <Image Grid.Row="0" Source="note_share_btn"/>
-                                    <Image Grid.Row="1" Source="note_delete_btn"/>
+                                    <Button Grid.Row="0" Clicked="NoteShareButton_Clicked" BackgroundColor="#5E2580" CornerRadius="10"/>
+                                    <Image Grid.Row="0" Source="note_share_btn" Margin="3"/>
+                                    <Button Grid.Row="1" BackgroundColor="#5E2580" Clicked="NoteDeleteButton_Clicked" CornerRadius="10"/>
+                                    <Image Grid.Row="1" Source="note_delete_btn" Margin="3" />
                                 </Grid>
                             </Grid>
+
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
