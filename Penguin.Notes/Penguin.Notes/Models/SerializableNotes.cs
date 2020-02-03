@@ -42,6 +42,7 @@ namespace Penguin.Notes.Models
         /// <param name="note">Модель заметки</param>
         public void RewriteNote(int index, Note note)
         {
+            note.Date = DateTime.Now;
             foreach (var item in Content)
             {
                 if (item.Index == index)

@@ -8,7 +8,7 @@
              Title="My Notes"
              xmlns:local="clr-namespace:Penguin.Notes.CustomElements;assembly=Penguin.Notes">
     
-  <StackLayout Padding="10">
+  <StackLayout>
         <ListView x:Name="Content"
                   SelectionMode="None" 
                   BackgroundColor="Default"
@@ -20,7 +20,7 @@
             <d:ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>qwertyuiopasdfghjkl;qwert</x:String>
-                    <x:String>create new note</x:String>
+                    <x:String>cregate new NOTE</x:String>
                     <x:String>settings</x:String>
                 </x:Array>
             </d:ListView.ItemsSource>
@@ -28,16 +28,35 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid Margin="10">
-                            <BoxView x:Name="ff" BackgroundColor="#CECECE" CornerRadius="10"/>
+                            <BoxView BackgroundColor="#CECECE" CornerRadius="10"/>
                             <BoxView BackgroundColor="#F6F6F6" CornerRadius="10" Margin="0, 0, 1, 1"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="0.25*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Padding="20, 10, 10, 20">
-                                    <Label Text="{Binding Title}" d:Text="{Binding}" FontSize="18" TextColor="#383838" Margin="5, 0, 0, 0"/>
-                                    <Label Text="{Binding Description}" d:Text="{Binding}" FontSize="15" TextColor="Gray"/>
+                                <StackLayout Padding="0, 0, 0, 0">
+                                    <Grid Margin="10, 5, 0, 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Title}" d:Text="{Binding}" Grid.Row="0"
+                                               FontSize="18"
+                                               TextColor="#383838"
+                                               Margin="5, 0, 0, 0"
+                                               VerticalTextAlignment="Center"
+                                               VerticalOptions="Fill"/>
+                                        <Label Text="{Binding Description}" d:Text="FKDBHFHDJB\nfgjnfdgjn 
+                                               fdjgvnfdljgvnlf"  Grid.Row="1"
+                                               FontSize="15"
+                                               TextColor="Gray"
+                                               VerticalTextAlignment="Center"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+                                    <Label Text="{Binding Date}" d:Text="01.02.20"
+                                            HorizontalTextAlignment="End"
+                                            FontSize="11" Margin="0, 0, 0, 2"/>
                                 </StackLayout>
                                 <BoxView Grid.Column="1" BackgroundColor="#5E2580" CornerRadius="0, 10, 0, 10"/>
                                 <Grid Grid.Column="1">
