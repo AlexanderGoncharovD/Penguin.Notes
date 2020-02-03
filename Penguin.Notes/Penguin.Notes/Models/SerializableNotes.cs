@@ -26,24 +26,29 @@ namespace Penguin.Notes.Models
         /// <summary>
         /// Добавить или изменить существуюущую заметку
         /// </summary>
-        /// <param name="note"></param>
-        public void AddNote(Note note)
+        public void SaveNote(string title, string content, Nullable<int> index)
         {
-            if (Content.Count > 0)
+            if (index != null)
             {
-                foreach (var item in Content)
-                {
-                    if (item.Index == note.Index)
-                    {
-                        Content[Content.IndexOf(item)] = note;
-                        return;
-                    }
-                }
-                Content.Insert(0, note);
+                Content.RemoveAt((int)index);
             }
-            else
+            Content.Insert(0, new Note(title, content));
+        }
+
+        /// <summary>
+        /// Перезаписать уже существующую заметку
+        /// </summary>
+        /// <param name="index">Порядковый номер заметки</param>
+        /// <param name="note">Модель заметки</param>
+        public void RewriteNote(int index, Note note)
+        {
+            foreach (var item in Content)
             {
-                Content.Add(note);
+                if (item.Index == index)
+                {
+                    Content[Content.IndexOf(item)] = note;
+                    return;
+                }
             }
         }
 
