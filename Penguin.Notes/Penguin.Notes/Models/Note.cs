@@ -35,6 +35,8 @@ namespace Penguin.Notes.Models
 
         #region .ctor
 
+        public Note() { }
+
         public Note(string title, string content, Nullable<int> index = null)
         {
             Title = title;

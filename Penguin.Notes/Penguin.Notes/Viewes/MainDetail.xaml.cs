@@ -40,6 +40,8 @@ namespace Penguin.Notes.Viewes
         private async void Content_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Note note = e.Item as Note;
+            if (note == null)
+                note = new Note();
             note.Index = e.ItemIndex;
             Page page = new CreateNewNote();
             ((CreateNewNote)page).Note = note;
@@ -69,7 +71,7 @@ namespace Penguin.Notes.Viewes
         private async void NoteDeleteButton_Clicked(object sender, EventArgs e)
         {
             var note = ((Button)sender).Parent.Parent.Parent.BindingContext as Note;
-            var isDelete = await DisplayAlert(note.Title, "Удалить записку безвозвратно?", "Да", "Отмена");
+            var isDelete = await DisplayAlert(note?.Title, "Удалить записку безвозвратно?", "Да", "Отмена");
             if (isDelete)
             {
                 MasterNotes.Notes.DeleteNote(note);

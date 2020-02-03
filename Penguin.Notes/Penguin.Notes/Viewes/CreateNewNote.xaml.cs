@@ -29,12 +29,6 @@ namespace Penguin.Notes.Viewes
         public CreateNewNote()
         {
             InitializeComponent();
-            /*if (note != null)
-            {
-                Title.Text = note.Title;
-                EditorContent.Text = note.Content;
-                isEditIndex = note.Index;
-            }*/
         }
 
         /// <summary>
@@ -42,7 +36,7 @@ namespace Penguin.Notes.Viewes
         /// </summary>
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            MasterNotes.Notes.AddNote(new Note(Title.Text, EditorContent.Text, isEditIndex));
+            MasterNotes.Notes.SaveNote(Title.Text, EditorContent.Text, isEditIndex);
 
             var error = MasterNotes.SaveNotesAsync();
             if (!String.IsNullOrEmpty(error))
