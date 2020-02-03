@@ -36,24 +36,6 @@ namespace Penguin.Notes.Models
         }
 
         /// <summary>
-        /// Перезаписать уже существующую заметку
-        /// </summary>
-        /// <param name="index">Порядковый номер заметки</param>
-        /// <param name="note">Модель заметки</param>
-        public void RewriteNote(int index, Note note)
-        {
-            note.Date = DateTime.Now;
-            foreach (var item in Content)
-            {
-                if (item.Index == index)
-                {
-                    Content[Content.IndexOf(item)] = note;
-                    return;
-                }
-            }
-        }
-
-        /// <summary>
         /// Удалить записку по модели записки
         /// </summary>
         /// <param name="note">Модель записки</param>

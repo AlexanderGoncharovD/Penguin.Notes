@@ -47,12 +47,26 @@ namespace Penguin.Notes.Viewes
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as Models.MenuItem;
-            
+
             if (item != null)
             {
-                await Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.Page.GetType()));
-                IsPresented = false;
-                MasterPage.MenuList.SelectedItem = null;
+                switch (item.Page)
+                {
+                    case MainDetail _:
+                        await Detail.Navigation.PopToRootAsync();
+                        IsPresented = false;
+                        MasterPage.MenuList.SelectedItem = null;
+                        break;
+                    default:
+                        if (item.Page.GetType() != ((NavigationPage)Detail).CurrentPage.GetType())
+                        {
+                            await Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.Page.GetType()));
+                        }
+                        IsPresented = false;
+                        MasterPage.MenuList.SelectedItem = null;
+                        break;
+                }
+
             }
         }
 

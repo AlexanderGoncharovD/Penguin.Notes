@@ -23,6 +23,7 @@ namespace Penguin.Notes.Viewes
                 Title.Text = value.Title;
                 EditorContent.Text = value.Content;
                 isEditIndex = value.Index;
+                Title.Text = "Edit Note";
             }
         }
 

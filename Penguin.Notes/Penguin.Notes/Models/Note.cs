@@ -48,6 +48,7 @@ namespace Penguin.Notes.Models
             Title = title;
             Content = content;
             Index = index;
+            Date = DateTime.Now;
             if (!String.IsNullOrEmpty(content))
                 Description = content.Substring(0, content.Length <= 50 ? content.Length : 50);
         }
